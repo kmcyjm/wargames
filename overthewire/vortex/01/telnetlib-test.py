@@ -12,8 +12,10 @@ import socket
 import struct
 import telnetlib
 
-HOST = 'vortex.labs.overthewire.org'
-PORT = 5842
+#HOST = 'vortex.labs.overthewire.org'
+#PORT = 5842
+HOST = 'localhost'
+PORT = 7890
 
 def q(a):
     # struct.pack() convert python value to c struct
@@ -25,20 +27,14 @@ def interact():
     t.sock = s
     t.interact()
 
-# create_connection() is a wrapper of socket() and connect() with exception handling
 s = socket.create_connection((HOST, PORT))
 
-acc = 0
-
-for i in range(4):
-    # unpack() returns a tuple even if only one element there
-    acc += struct.unpack("I", s.recv(4))[0]
-
-s.send(q(acc))
-
-"""
-Use interact() instead of socket.recv() to print out the received data in ASCII.
-Otherwise, dump() or sys.stdout.write(text.decode('ascii')) is needed to print the data out as ASCII.
-"""
+#acc = 0
+#
+#for i in range(4):
+#    # unpack() returns a tuple even if only one element there
+#    acc += struct.unpack("I", s.recv(4))[0]
+#
+#s.send(q(acc))
 
 interact()

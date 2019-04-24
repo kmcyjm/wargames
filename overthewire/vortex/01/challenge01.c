@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
             uint32_p++;
         }
 
-        if(send(sockfd, &sum, sizeof(int), 0) == -1)
-            fatal("sending data");
+    if(send(sockfd, &sum, sizeof(int), 0) == -1)
+        fatal("sending data");
     }
 }
